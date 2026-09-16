@@ -4,10 +4,18 @@
 struct TPair
 {
     double first, second;
+
+    int check();
+    void input(int i);
+    int isDiapazon(TPair &ob2);
+    double distanceTwo(TPair &ob2);
+    void output(int i);
+    void PrintDiapazon(int diapazon);
+    void PrintDistance(double distance);
 };
 
-int check(TPair &ob) {
-    if (( ob.first < 0 || ob.first > 100 ) || (ob.second < 0 || ob.second > 100)) {
+int TPair::check() {
+    if (( first < 0 || first > 100 ) || (second < 0 || second > 100)) {
         std::cout << "Invalid input!\n";
         std::cout << "Number must be greater than 0 and less than 100.\n";
         std::cout << "Please try again.\n";
@@ -17,58 +25,58 @@ int check(TPair &ob) {
     return 1;
 }
 
-void input(TPair &ob, int i) {
+void TPair::input(int i) {
     int isValid;
     std::cout << "=====INPUT=====";
     std::cout << std::endl;
     do {
         std::cout << "Enter number for ob" << i << ": ";
-        std::cin >> ob.first;
+        std::cin >> first;
 
         std::cout << "Enter border for ob" << i << ": ";
-        std::cin >> ob.second;
+        std::cin >> second;
 
-        isValid = check(ob);
+        isValid = check();
     } while (!isValid);
 
     std::cout << std::endl;
 }
 
-int isDiapazon(TPair &ob1,  TPair &ob2) {
-    if ((ob2.first > ob1.first - ob1.second && ob2.first < ob1.first + ob1.second) && (ob1.first > ob2.first - ob2.second && ob1.first < ob2.first + ob2.second)) {
+int TPair::isDiapazon(TPair &ob2) {
+    if ((ob2.first > first - second && ob2.first < first + second) && (first > ob2.first - ob2.second && first < ob2.first + ob2.second)) {
         return 3;
     }
-    if (ob2.first > ob1.first - ob1.second && ob2.first < ob1.first + ob1.second) {
+    if (ob2.first > first - second && ob2.first < first + second) {
         return 2;
     }
-    if (ob1.first > ob2.first - ob2.second && ob1.first < ob2.first + ob2.second) {
+    if (first > ob2.first - ob2.second && first < ob2.first + ob2.second) {
         return 1;
     }
     return 0;
 }
 
-double distanceTwo(TPair &ob1,  TPair &ob2) {
-    if (ob1.first + ob1.second < ob2.first - ob2.second) {
-        return (ob2.first - ob2.second) - (ob1.first + ob1.second);
+double TPair::distanceTwo(TPair &ob2) {
+    if (first + second < ob2.first - ob2.second) {
+        return (ob2.first - ob2.second) - (first + second);
     }
 
-    if (ob2.first + ob2.second < ob1.first - ob1.second) {
-        return (ob1.first - ob1.second) - (ob2.first + ob2.second);
+    if (ob2.first + ob2.second < first - second) {
+        return (first - second) - (ob2.first + ob2.second);
     }
 
     return 0;
 }
 
-void output(TPair &ob, int i) {
+void TPair::output(int i) {
     std::cout << "======OUTPUT=====";
     std::cout << std::endl;
 
-    std::cout << "Ob" << i << " " << "(" << ob.first-ob.second << " " << ob.first <<  " " << ob.first + ob.second << ")";
+    std::cout << "Ob" << i << " " << "(" << first-second << " " << first <<  " " << first + second << ")";
 
     std::cout << std::endl;
 }
 
-void PrintDiapazon(int diapazon) {
+void TPair::PrintDiapazon(int diapazon) {
     std:: cout << std::endl;
     if (diapazon == 2) {
         std::cout << "Ob1 contains Ob2s number";
@@ -83,7 +91,7 @@ void PrintDiapazon(int diapazon) {
     std::cout << std::endl;
 }
 
-void PrintDistance(double distance) {
+void TPair::PrintDistance(double distance) {
     if(distance == 0) {
         std::cout << "Distance is 0";
     }
@@ -97,15 +105,15 @@ void PrintDistance(double distance) {
 int main() {
     TPair ob1, ob2;
 
-    input(ob1,1);
-    input(ob2,2);
+    ob1.input(1);
+    ob2.input(2);
 
-    output(ob1, 1);
-    output(ob2,2);
+    ob1.output(1);
+    ob2.output(2);
 
-    PrintDiapazon(isDiapazon(ob1, ob2));
+    ob1.PrintDiapazon(ob1.isDiapazon(ob2));
 
-    PrintDistance(distanceTwo(ob1, ob2));
+    ob1.PrintDistance(ob1.distanceTwo(ob2));
 
     return 0;
 }
