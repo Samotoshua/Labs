@@ -1,4 +1,4 @@
-//Двозв'язний список !!!
+//Однозв'язний список
 #include <iostream>
 
 #define ListSize 15

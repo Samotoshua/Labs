@@ -157,7 +157,7 @@ int main() {
 
     PrintList(B);
     std::cout << '\n';
-    
+
     DestroyList(A);
     DestroyList(B);
 

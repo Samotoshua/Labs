@@ -1,4 +1,4 @@
-//Однозв'язний список
+// //Однозв'язний список без кінця
  #include <iostream>
 
  #define ListSize 15
@@ -10,13 +10,12 @@
  };
 
  struct TList {
-     TListItem *First, *Last;
+     TListItem *First;
  };
 
  TList InitList() {
      TList r;
      r.First = nullptr;
-     r.Last = nullptr;
      return r;
  }
 
@@ -25,13 +24,17 @@
          List.First = new TListItem;
          List.First->Next = nullptr;
          List.First->Value = val;
-         List.Last = List.First;
      }
      else {
-         List.Last->Next = new TListItem;
-         List.Last->Next->Next = nullptr;
-         List.Last->Next->Value = val;
-         List.Last = List.Last->Next;
+         TListItem *t = List.First;
+
+         while (t->Next != nullptr) {
+            t = t->Next;
+         }
+
+         t->Next = new TListItem;
+         t->Next->Value = val;
+         t->Next->Next = nullptr;
      }
  }
 
@@ -42,7 +45,7 @@
          delete t;
          t = r;
      }
-     List.First = List.Last = nullptr;
+     List.First = nullptr;
  }
 
  void PrintList(TList &List) {
