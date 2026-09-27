@@ -5,8 +5,8 @@ struct TPair
     double first, second;
 };
 
-int check(double n) {
-    if (n < 0 || n > 100) {
+int check(struct TPair* ob) {
+    if (( ob->first < 0 || ob->first > 100 ) || (ob->second < 0 || ob->second > 100)) {
         printf("Invalid input!\n");
         printf("Number must be greater than 0 and less than 100.\n");
         printf("Please try again.\n");
@@ -24,14 +24,10 @@ void input(struct TPair* ob, int i) {
         printf("Enter number for ob%d: ",i);
         scanf("%lf", &ob->first);
 
-        isValid = check(ob->first);
-    }while (!isValid);
-
-    do {
         printf("Enter border for ob%d: ",i);
         scanf("%lf", &ob->second);
 
-        isValid = check(ob->second);
+        isValid = check(ob);
     } while (!isValid);
 
     printf("\n");
@@ -51,41 +47,28 @@ int isDiapazon(struct TPair* ob1, struct TPair* ob2) {
 }
 
 double distanceTwo(struct TPair* ob1, struct TPair* ob2) {
-    double ob1Limits[2] = {
-        ob1->first - ob1->second,
-        ob1->first + ob1->second
-    };
-
-    double ob2Limits[2] = {
-        ob2->first - ob2->second,
-        ob2->first + ob2->second
-    };
-
-    double min = ob1Limits[0] - ob2Limits[0];
-    if (min < 0)
-        min = -min;
-
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 2; j++) {
-            double d = ob1Limits[i] - ob2Limits[j];
-
-            if (d < 0)
-                d = -d;
-
-            if (d < min)
-                min = d;
+    if(isDiapazon(ob1, ob2) == 0) {
+        if(ob1->first > ob2->first) {
+            return (ob1->first - ob1->second) - (ob2->first + ob2->second);
+        }
+        if(ob1->first < ob2->first) {
+            return (ob2->first - ob2->second) - (ob1->first + ob1->second);
         }
     }
-
-    return min;
+    return 0;
 }
 
-void output(struct TPair *ob1, struct TPair *ob2) {
+void output(struct TPair *ob, int i) {
     printf("======OUTPUT=====");
     printf("\n");
 
-    int diapazon = isDiapazon(ob1, ob2);
+    printf("Ob%d (%.2lf  %.2lf  %.2lf)", i, ob->first-ob->second, ob->first, ob->first + ob->second);
 
+    printf("\n");
+}
+
+void PrintDiapazon(int diapazon) {
+    printf("\n");
     if (diapazon == 2) {
         printf("Ob1 contains Ob2s number");
     }
@@ -96,12 +79,16 @@ void output(struct TPair *ob1, struct TPair *ob2) {
         printf("Ob1 and Ob2 contain each other");
     }
     else { printf("No one contain each other"); }
-
     printf("\n");
-    printf("Minimal distance between ob1 and ob2 is: %.2lf", distanceTwo(ob1, ob2));
+}
 
-    printf("\n");
-    printf("=====END=====");
+void PrintDistance(double distance) {
+    if(distance == 0) {
+        printf("Distance is 0");
+    }
+    else {
+        printf("Distance is %.2lf", distance);
+    }
     printf("\n");
 }
 
@@ -111,7 +98,15 @@ int main(void) {
     input(&ob1,1);
     input(&ob2,2);
 
-    output(&ob1, &ob2);
+    output(&ob1, 1);
+    output(&ob2,2);
+
+    isDiapazon(&ob1, &ob2);
+    PrintDiapazon(isDiapazon(&ob1, &ob2));
+
+    distanceTwo(&ob1, &ob2);
+    PrintDistance(distanceTwo(&ob1, &ob2));
 
     return 0;
 }
+
