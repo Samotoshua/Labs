@@ -3,29 +3,26 @@
 struct BinaryVector {
     int size;
     int *vector;
-
-    void displayVector();
-    int isValid();
 };
 
-void BinaryVector::displayVector() {
+void displayVector(const BinaryVector &v) {
     std::cout << "(";
 
-    for (int i = 0; i < size; i++) {
-        if (i == size - 1) {
-            std::cout << vector[i];
+    for (int i = 0; i < v.size; i++) {
+        if (i == v.size - 1) {
+            std::cout << v.vector[i];
             break;
         }
 
-        std::cout << vector[i] << ", ";
+        std::cout << v.vector[i] << ", ";
     }
 
     std::cout << ")";
 }
 
-int BinaryVector::isValid() {
-    for (int i = 0; i < size; i++) {
-        if ((vector[i] != 0) && (vector[i] != 1)) {
+int isValid(const BinaryVector &v) {
+    for (int i = 0; i < v.size; i++) {
+        if ((v.vector[i] != 0) && (v.vector[i] != 1)) {
             std::cout << "Numbers must be either 0 or 1!" << std::endl;
             std::cout << "Try again." << std::endl;
             return 0;
@@ -35,7 +32,7 @@ int BinaryVector::isValid() {
     return 1;
 }
 
-std::istream& operator>>(std::istream& is, BinaryVector& v) {
+std::istream& operator>>(std::istream &is, BinaryVector &v) {
     do {
         std::cout << "Enter vector: ";
 
@@ -43,12 +40,12 @@ std::istream& operator>>(std::istream& is, BinaryVector& v) {
             is >> v.vector[i];
         }
 
-    } while (!v.isValid());
+    } while (!isValid(v));
 
     return is;
 }
 
-BinaryVector operator+(BinaryVector &v1, BinaryVector &v2) {
+BinaryVector operator+(const BinaryVector &v1, const BinaryVector &v2) {
     BinaryVector result;
 
     result.size = v1.size;
@@ -65,7 +62,7 @@ BinaryVector operator+(BinaryVector &v1, BinaryVector &v2) {
     return result;
 }
 
-BinaryVector operator*(BinaryVector &v1, BinaryVector &v2) {
+BinaryVector operator*(const BinaryVector &v1, const BinaryVector &v2) {
     BinaryVector result;
 
     result.size = v1.size;
@@ -81,8 +78,6 @@ BinaryVector operator*(BinaryVector &v1, BinaryVector &v2) {
 int main() {
     BinaryVector bv1;
     BinaryVector bv2;
-    BinaryVector Union;
-    BinaryVector Intersection;
 
     std::cout << "=====INPUT=====" << std::endl;
 
@@ -112,28 +107,28 @@ int main() {
     std::cin >> bv2;
 
 
+    BinaryVector Union = bv1 + bv2;
+    BinaryVector Intersection = bv1 * bv2;
+
+
     std::cout << "=====OUTPUT=====" << std::endl;
 
     std::cout << "Vector 1: ";
-    bv1.displayVector();
+    displayVector(bv1);
     std::cout << std::endl;
 
     std::cout << "Vector 2: ";
-    bv2.displayVector();
+    displayVector(bv2);
     std::cout << std::endl;
 
-
-    Union = bv1 + bv2;
 
     std::cout << "Union:        ";
-    Union.displayVector();
+    displayVector(Union);
     std::cout << std::endl;
 
 
-    Intersection = bv1 * bv2;
-
     std::cout << "Intersection: ";
-    Intersection.displayVector();
+    displayVector(Intersection);
     std::cout << std::endl;
 
 
