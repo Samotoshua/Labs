@@ -1,202 +1,209 @@
 #include <iostream>
 #include <cmath>
 #include <cstring>
-#include <cstdio>
 
 struct quadraticFunction {
     double a, b, c;
-
-    double roots[2];
 };
 
 class quadraticFunctionClass {
-    private:
-        quadraticFunction object;
+private:
+    quadraticFunction func;
 
-    public:
-        void init(double, double, double);
-        void input();
-        void output() const;
-        char* toPChar() const;
+public:
+    void init();
+    void input();
+    void output() const;
+    char* toPChar() const;
 
-        void setStruct(const quadraticFunction&);
-        quadraticFunction getStruct() const;
+    void setStruct(const quadraticFunction &f);
+    quadraticFunction getStruct() const;
 };
 
-void quadraticFunctionClass::init(const double a, const double b, const double c) {
-    object.a = a;
-    object.b = b;
-    object.c = c;
 
-    object.roots[0] = 0;
-    object.roots[1] = 0;
+void quadraticFunctionClass::init() {
+    func.a = 0;
+    func.b = 0;
+    func.c = 0;
 }
 
 void quadraticFunctionClass::input() {
-    do {
-        std::cin >> object.a >> object.b >> object.c;
-
-        if (object.a == 0) {
-            std::cout << "Coefficient a cannot be 0!" << std::endl;
-            std::cout << "Try again." << std::endl;
-        }
-    } while (object.a == 0);
+    std::cin >> func.a >> func.b >> func.c;
 }
 
 void quadraticFunctionClass::output() const {
-    std::cout << "f(x) = " << object.a << "x^2 + " << object.b << "x + " << object.c << std::endl;
+    std::cout << "f(x) = "
+              << func.a << "x^2 + "
+              << func.b << "x + "
+              << func.c << std::endl;
 }
 
 char* quadraticFunctionClass::toPChar() const {
     char tmp[64];
 
-    snprintf(tmp, sizeof(tmp), "%.2lfx^2 + %.2lfx + %.2lf", object.a, object.b, object.c);
+    snprintf(
+        tmp,
+        sizeof(tmp),
+        "%.2lfx^2 + %.2lfx + %.2lf",
+        func.a,
+        func.b,
+        func.c
+    );
 
     char* result = new char[strlen(tmp) + 1];
-
     strcpy(result, tmp);
 
     return result;
 }
 
 void quadraticFunctionClass::setStruct(const quadraticFunction &f) {
-    object = f;
+    func = f;
 }
 
 quadraticFunction quadraticFunctionClass::getStruct() const {
-    return object;
+    return func;
 }
 
-void shift(quadraticFunctionClass &f) {
-    quadraticFunction object = f.getStruct();
 
-    object.c += 1;
+inline double discriminant(const quadraticFunctionClass &f) {
+    quadraticFunction func = f.getStruct();
 
-    f.setStruct(object);
+    return func.b * func.b - 4 * func.a * func.c;
+}
+
+void shift(quadraticFunctionClass &f, const double c) {
+    quadraticFunction func = f.getStruct();
+
+    func.c += c;
+
+    f.setStruct(func);
 }
 
 bool odd(const quadraticFunctionClass &f) {
-    quadraticFunction object = f.getStruct();
+    quadraticFunction func = f.getStruct();
 
-    if (object.b == 0) return true;
+    if (-func.b / (2 * func.a) == 0)
+        return true;
 
     return false;
 }
 
-int roots(quadraticFunctionClass &f) {
-    quadraticFunction object = f.getStruct();
+int roots(const quadraticFunctionClass &f, double rootsArray[2]) {
+    quadraticFunction func = f.getStruct();
 
-    const double D = (object.b * object.b) - (4 * object.a * object.c);
+    double D = discriminant(f);
 
     if (D < 0) {
-        f.setStruct(object);
-
         return 0;
     }
-    else if (D == 0) {
-        object.roots[0] = -object.b / (2 * object.a);
-        object.roots[1] = object.roots[0];
 
-        f.setStruct(object);
+    if (D == 0) {
+        rootsArray[0] = -func.b / (2 * func.a);
+        rootsArray[1] = rootsArray[0];
 
         return 1;
     }
-    else {
-        object.roots[0] = (-object.b + sqrt(D)) / (2 * object.a);
-        object.roots[1] = (-object.b - sqrt(D)) / (2 * object.a);
 
-        f.setStruct(object);
-
-        return 2;
-    }
-}
-
-void printRoots(const quadraticFunctionClass &f, const int rootsCount) {
-    quadraticFunction object = f.getStruct();
-
-    if (rootsCount == 0) {
-        std::cout << "No real roots." << std::endl;
-    }
-    else if (rootsCount == 1) {
-        std::cout << "Root: " << object.roots[0] << std::endl;
-    }
-    else {
-        std::cout << "Roots: (" << object.roots[0] << ", " << object.roots[1] << ")" << std::endl;
-    }
-}
-
-void printVertex(const quadraticFunctionClass &f) {
-    quadraticFunction object = f.getStruct();
-
-    const double D = (object.b * object.b) - (4 * object.a * object.c);
-
-    std::cout << "Vertex: (" << -object.b / (2 * object.a) << ", " << -D / (4 * object.a) << ")" << std::endl;
-}
-
-int countIntersections(const quadraticFunctionClass &f) {
-    quadraticFunction object = f.getStruct();
-
-    const double D = (object.b * object.b) - (4 * object.a * object.c);
-
-    if (D < 0) return 0;
-    if (D == 0) return 1;
+    rootsArray[0] = (-func.b + sqrt(D)) / (2 * func.a);
+    rootsArray[1] = (-func.b - sqrt(D)) / (2 * func.a);
 
     return 2;
 }
 
+void printVertex(const quadraticFunctionClass &f) {
+    quadraticFunction func = f.getStruct();
+
+    double D = discriminant(f);
+
+    std::cout << "Vertex: ("
+              << -func.b / (2 * func.a)
+              << ", "
+              << -D / (4 * func.a)
+              << ")"
+              << std::endl;
+}
+
+void printRoots(double rootsArray[2], int count) {
+    if (count == 0) {
+        std::cout << "Roots: no roots" << std::endl;
+    }
+
+    else if (count == 1) {
+        std::cout << "Roots: (" << rootsArray[0] << ")" << std::endl;
+    }
+
+    else {
+        std::cout << "Roots: ("
+                  << rootsArray[0] << ", "
+                  << rootsArray[1] << ")"
+                  << std::endl;
+    }
+}
+
+
 int main() {
     quadraticFunctionClass func;
 
-    func.init(1, 0, 0);
+    double rootsArray[2];
+
+    func.init();
 
     std::cout << "=====INPUT=====" << std::endl;
     func.input();
 
     std::cout << "=====OUTPUT=====" << std::endl;
+
     func.output();
 
-    int rootsCount = roots(func);
-    printRoots(func, rootsCount);
+    int rootsCount = roots(func, rootsArray);
+
+    printRoots(rootsArray, rootsCount);
 
     printVertex(func);
 
-    if (odd(func)) std::cout << "Function is even." << std::endl;
-    else std::cout << "Function is neither even nor odd." << std::endl;
+    if (odd(func))
+        std::cout << "Function is even." << std::endl;
+    else
+        std::cout << "Function is odd." << std::endl;
 
-    std::cout << "Intersections with OX: " << countIntersections(func) << std::endl;
-
-    char* converted = func.toPChar();
-    std::cout << "Conversion: " << converted << std::endl;
-
-    delete[] converted;
+    std::cout << "Intersections with OX: "
+              << rootsCount
+              << std::endl;
 
     std::cout << "=====END=====" << std::endl;
 
 
-
-    shift(func);
-
+    shift(func, 15);
 
 
     std::cout << "=====OUTPUT=====" << std::endl;
+
     func.output();
 
-    rootsCount = roots(func);
-    printRoots(func, rootsCount);
+    rootsCount = roots(func, rootsArray);
+
+    printRoots(rootsArray, rootsCount);
 
     printVertex(func);
 
-    if (odd(func)) std::cout << "Function is even." << std::endl;
-    else std::cout << "Function is neither even nor odd." << std::endl;
+    if (odd(func))
+        std::cout << "Function is even." << std::endl;
+    else
+        std::cout << "Function is odd." << std::endl;
 
-    std::cout << "Intersections with OX: " << countIntersections(func) << std::endl;
-
-    converted = func.toPChar();
-    std::cout << "Conversion: " << converted << std::endl;
-
-    delete[] converted;
+    std::cout << "Intersections with OX: "
+              << rootsCount
+              << std::endl;
 
     std::cout << "=====END=====" << std::endl;
+
+    char* converted = func.toPChar();
+
+    std::cout << "Conversion: "
+              << converted
+              << std::endl;
+
+    delete[] converted;
 
     return 0;
 }
