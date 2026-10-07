@@ -1,0 +1,68 @@
+[
+{
+  "directory": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug",
+  "command": "\"D:\\Programming\\Programs\\CLion 2025.3.2\\bin\\mingw\\bin\\g++.exe\" -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\Lab1_Iterators.dir\\Labs\\Lab1_Iterators.cpp.obj -c D:\\Programming\\Projects\\AlgAndDataSctructCpp\\Labs\\Lab1_Iterators.cpp",
+  "file": "D:/Programming/Projects/AlgAndDataSctructCpp/Labs/Lab1_Iterators.cpp",
+  "output": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/Lab1_Iterators.dir/Labs/Lab1_Iterators.cpp.obj"
+},
+{
+  "directory": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug",
+  "command": "\"D:\\Programming\\Programs\\CLion 2025.3.2\\bin\\mingw\\bin\\g++.exe\" -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\Lab1.dir\\Labs\\Lab1.cpp.obj -c D:\\Programming\\Projects\\AlgAndDataSctructCpp\\Labs\\Lab1.cpp",
+  "file": "D:/Programming/Projects/AlgAndDataSctructCpp/Labs/Lab1.cpp",
+  "output": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/Lab1.dir/Labs/Lab1.cpp.obj"
+},
+{
+  "directory": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug",
+  "command": "\"D:\\Programming\\Programs\\CLion 2025.3.2\\bin\\mingw\\bin\\g++.exe\" -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\ListsWithIterators.dir\\Lists\\ListsWithIterators.cpp.obj -c D:\\Programming\\Projects\\AlgAndDataSctructCpp\\Lists\\ListsWithIterators.cpp",
+  "file": "D:/Programming/Projects/AlgAndDataSctructCpp/Lists/ListsWithIterators.cpp",
+  "output": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListsWithIterators.dir/Lists/ListsWithIterators.cpp.obj"
+},
+{
+  "directory": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug",
+  "command": "\"D:\\Programming\\Programs\\CLion 2025.3.2\\bin\\mingw\\bin\\g++.exe\" -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\ListsWithIterators.dir\\Lists\\ListWithCircleOneDirection.cpp.obj -c D:\\Programming\\Projects\\AlgAndDataSctructCpp\\Lists\\ListWithCircleOneDirection.cpp",
+  "file": "D:/Programming/Projects/AlgAndDataSctructCpp/Lists/ListWithCircleOneDirection.cpp",
+  "output": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListsWithIterators.dir/Lists/ListWithCircleOneDirection.cpp.obj"
+},
+{
+  "directory": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug",
+  "command": "\"D:\\Programming\\Programs\\CLion 2025.3.2\\bin\\mingw\\bin\\g++.exe\" -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\ListsWithTwoDirections.dir\\Lists\\ListsWithTwoDirections.cpp.obj -c D:\\Programming\\Projects\\AlgAndDataSctructCpp\\Lists\\ListsWithTwoDirections.cpp",
+  "file": "D:/Programming/Projects/AlgAndDataSctructCpp/Lists/ListsWithTwoDirections.cpp",
+  "output": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListsWithTwoDirections.dir/Lists/ListsWithTwoDirections.cpp.obj"
+},
+{
+  "directory": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug",
+  "command": "\"D:\\Programming\\Programs\\CLion 2025.3.2\\bin\\mingw\\bin\\g++.exe\" -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\ListsWithOneDirection-NextOnly.dir\\Lists\\ListsWithOneDirection-NextOnly.cpp.obj -c D:\\Programming\\Projects\\AlgAndDataSctructCpp\\Lists\\ListsWithOneDirection-NextOnly.cpp",
+  "file": "D:/Programming/Projects/AlgAndDataSctructCpp/Lists/ListsWithOneDirection-NextOnly.cpp",
+  "output": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListsWithOneDirection-NextOnly.dir/Lists/ListsWithOneDirection-NextOnly.cpp.obj"
+},
+{
+  "directory": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug",
+  "command": "\"D:\\Programming\\Programs\\CLion 2025.3.2\\bin\\mingw\\bin\\g++.exe\" -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\ListsWithOneDirection-PrevOnly.dir\\Lists\\ListsWithOneDirection-PrevOnly.cpp.obj -c D:\\Programming\\Projects\\AlgAndDataSctructCpp\\Lists\\ListsWithOneDirection-PrevOnly.cpp",
+  "file": "D:/Programming/Projects/AlgAndDataSctructCpp/Lists/ListsWithOneDirection-PrevOnly.cpp",
+  "output": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListsWithOneDirection-PrevOnly.dir/Lists/ListsWithOneDirection-PrevOnly.cpp.obj"
+},
+{
+  "directory": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug",
+  "command": "\"D:\\Programming\\Programs\\CLion 2025.3.2\\bin\\mingw\\bin\\g++.exe\" -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\ListsWithOneDirection-NoEnd.dir\\Lists\\ListsWithOneDirection-NoEnd.cpp.obj -c D:\\Programming\\Projects\\AlgAndDataSctructCpp\\Lists\\ListsWithOneDirection-NoEnd.cpp",
+  "file": "D:/Programming/Projects/AlgAndDataSctructCpp/Lists/ListsWithOneDirection-NoEnd.cpp",
+  "output": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListsWithOneDirection-NoEnd.dir/Lists/ListsWithOneDirection-NoEnd.cpp.obj"
+},
+{
+  "directory": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug",
+  "command": "\"D:\\Programming\\Programs\\CLion 2025.3.2\\bin\\mingw\\bin\\g++.exe\" -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\ListWithCircle.dir\\Lists\\ListWithCircle.cpp.obj -c D:\\Programming\\Projects\\AlgAndDataSctructCpp\\Lists\\ListWithCircle.cpp",
+  "file": "D:/Programming/Projects/AlgAndDataSctructCpp/Lists/ListWithCircle.cpp",
+  "output": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListWithCircle.dir/Lists/ListWithCircle.cpp.obj"
+},
+{
+  "directory": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug",
+  "command": "\"D:\\Programming\\Programs\\CLion 2025.3.2\\bin\\mingw\\bin\\g++.exe\" -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\Iterator.dir\\Iterators\\Iterators.cpp.obj -c D:\\Programming\\Projects\\AlgAndDataSctructCpp\\Iterators\\Iterators.cpp",
+  "file": "D:/Programming/Projects/AlgAndDataSctructCpp/Iterators/Iterators.cpp",
+  "output": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/Iterator.dir/Iterators/Iterators.cpp.obj"
+},
+{
+  "directory": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug",
+  "command": "\"D:\\Programming\\Programs\\CLion 2025.3.2\\bin\\mingw\\bin\\g++.exe\" -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\ListWithCircleOneDirection.dir\\Lists\\ListWithCircleOneDirection.cpp.obj -c D:\\Programming\\Projects\\AlgAndDataSctructCpp\\Lists\\ListWithCircleOneDirection.cpp",
+  "file": "D:/Programming/Projects/AlgAndDataSctructCpp/Lists/ListWithCircleOneDirection.cpp",
+  "output": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListWithCircleOneDirection.dir/Lists/ListWithCircleOneDirection.cpp.obj"
+}
+]

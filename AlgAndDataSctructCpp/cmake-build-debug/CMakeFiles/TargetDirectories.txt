@@ -1,0 +1,12 @@
+D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/Lab1_Iterators.dir
+D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/Lab1.dir
+D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListsWithIterators.dir
+D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListsWithTwoDirections.dir
+D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListsWithOneDirection-NextOnly.dir
+D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListsWithOneDirection-PrevOnly.dir
+D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListsWithOneDirection-NoEnd.dir
+D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListWithCircle.dir
+D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/Iterator.dir
+D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListWithCircleOneDirection.dir
+D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/rebuild_cache.dir
