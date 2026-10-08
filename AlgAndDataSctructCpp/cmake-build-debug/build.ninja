@@ -397,6 +397,41 @@ build ListWithCircleOneDirection.exe: CXX_EXECUTABLE_LINKER__ListWithCircleOneDi
   TARGET_IMPLIB = libListWithCircleOneDirection.dll.a
   TARGET_PDB = ListWithCircleOneDirection.exe.dbg
 
+# =============================================================================
+# Object build statements for EXECUTABLE target Lab2
+
+
+#############################################
+# Order-only phony target for Lab2
+
+build cmake_object_order_depends_target_Lab2: phony || .
+
+build CMakeFiles/Lab2.dir/Labs/Lab2.cpp.obj: CXX_COMPILER__Lab2_unscanned_Debug D$:/Programming/Projects/AlgAndDataSctructCpp/Labs/Lab2.cpp || cmake_object_order_depends_target_Lab2
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\Lab2.dir\Labs\Lab2.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Lab2.dir
+  OBJECT_FILE_DIR = CMakeFiles\Lab2.dir\Labs
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target Lab2
+
+
+#############################################
+# Link the executable Lab2.exe
+
+build Lab2.exe: CXX_EXECUTABLE_LINKER__Lab2_Debug CMakeFiles/Lab2.dir/Labs/Lab2.cpp.obj
+  CONFIG = Debug
+  FLAGS = -g
+  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\Lab2.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = Lab2.exe
+  TARGET_IMPLIB = libLab2.dll.a
+  TARGET_PDB = Lab2.exe.dbg
+
 
 #############################################
 # Utility command for edit_cache
@@ -429,6 +464,8 @@ build Lab1: phony Lab1.exe
 
 build Lab1_Iterators: phony Lab1_Iterators.exe
 
+build Lab2: phony Lab2.exe
+
 build ListWithCircle: phony ListWithCircle.exe
 
 build ListWithCircleOneDirection: phony ListWithCircleOneDirection.exe
@@ -458,7 +495,7 @@ build codegen: phony
 #############################################
 # Folder: D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug
 
-build all: phony Lab1_Iterators.exe Lab1.exe ListsWithIterators.exe ListsWithTwoDirections.exe ListsWithOneDirection-NextOnly.exe ListsWithOneDirection-PrevOnly.exe ListsWithOneDirection-NoEnd.exe ListWithCircle.exe Iterator.exe ListWithCircleOneDirection.exe
+build all: phony Lab1_Iterators.exe Lab1.exe ListsWithIterators.exe ListsWithTwoDirections.exe ListsWithOneDirection-NextOnly.exe ListsWithOneDirection-PrevOnly.exe ListsWithOneDirection-NoEnd.exe ListWithCircle.exe Iterator.exe ListWithCircleOneDirection.exe Lab2.exe
 
 # =============================================================================
 # Built-in targets

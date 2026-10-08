@@ -14,3 +14,4 @@ add_executable(ListsWithOneDirection-NoEnd Lists/ListsWithOneDirection-NoEnd.cpp
 add_executable(ListWithCircle Lists/ListWithCircle.cpp)
 add_executable(Iterator Iterators/Iterators.cpp)
 add_executable(ListWithCircleOneDirection Lists/ListWithCircleOneDirection.cpp)
+add_executable(Lab2 Labs/Lab2.cpp)

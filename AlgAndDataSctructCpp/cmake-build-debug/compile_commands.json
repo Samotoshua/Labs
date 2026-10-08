@@ -64,5 +64,11 @@
   "command": "\"D:\\Programming\\Programs\\CLion 2025.3.2\\bin\\mingw\\bin\\g++.exe\" -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\ListWithCircleOneDirection.dir\\Lists\\ListWithCircleOneDirection.cpp.obj -c D:\\Programming\\Projects\\AlgAndDataSctructCpp\\Lists\\ListWithCircleOneDirection.cpp",
   "file": "D:/Programming/Projects/AlgAndDataSctructCpp/Lists/ListWithCircleOneDirection.cpp",
   "output": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/ListWithCircleOneDirection.dir/Lists/ListWithCircleOneDirection.cpp.obj"
+},
+{
+  "directory": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug",
+  "command": "\"D:\\Programming\\Programs\\CLion 2025.3.2\\bin\\mingw\\bin\\g++.exe\" -g -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\Lab2.dir\\Labs\\Lab2.cpp.obj -c D:\\Programming\\Projects\\AlgAndDataSctructCpp\\Labs\\Lab2.cpp",
+  "file": "D:/Programming/Projects/AlgAndDataSctructCpp/Labs/Lab2.cpp",
+  "output": "D:/Programming/Projects/AlgAndDataSctructCpp/cmake-build-debug/CMakeFiles/Lab2.dir/Labs/Lab2.cpp.obj"
 }
 ]
