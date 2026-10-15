@@ -30,6 +30,35 @@ Polynomial::Polynomial(int size) {
     std::cout << "Constructor with size" << std::endl;
 }
 
+Polynomial::Polynomial(int size, const int *matrix) {
+    if (size <= 0) {
+        this->size = 0;
+
+        whole = nullptr;
+        natural = nullptr;
+
+        std::cout << "Invalid size! Enter polynomial again:" << std::endl;
+        input();
+    }
+    else {
+        this->size = size;
+        whole = new int[size];
+        natural = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            whole[i] = matrix[i];
+            natural[i] = matrix[i + size];
+
+            while (natural[i] == 0) {
+                std::cout << "Denominator cannot be zero! Enter again: ";
+                std::cin >> natural[i];
+            }
+        }
+    }
+
+    std::cout << "Constructor with arrays" << std::endl;
+}
+
 Polynomial::Polynomial(int size, const int *num, const int *den) {
     if (size <= 0) {
         this->size = 0;

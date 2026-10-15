@@ -10,6 +10,7 @@ private:
 public:
     Polynomial();
     Polynomial(int size);
+    Polynomial(int size, const int *matrix);
     Polynomial(int size, const int *num, const int *den);
     Polynomial(const Polynomial &other);
 
