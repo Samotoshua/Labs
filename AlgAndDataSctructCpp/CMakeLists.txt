@@ -4,7 +4,9 @@ project(AlgAndDataSctructCpp)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(Lab1_Iterators Labs/Lab1_Iterators.cpp)
-add_executable(Lab1 Labs/Lab1.cpp)
+add_executable(Lab1 Labs/Lab1.cpp
+        Labs/Lab3_Stack.cpp
+        Labs/Lab3_Queue.cpp)
 add_executable(ListsWithIterators List/ListsWithIterators.cpp
         List/ListWithCircleOneDirection.cpp
         List/ListWithCircleWithIterator.cpp
@@ -23,3 +25,5 @@ add_executable(Queue Queue/Queue.cpp)
 add_executable(Lab2_Iterators Labs/Lab2_Iterators.cpp)
 add_executable(ListWithCircleWithIterator List/ListWithCircleWithIterator.cpp)
 add_executable(ListWithCircleOneDirectionWithIterator List/ListWithCircleOneDirectionWithIterator.cpp)
+add_executable(Lab3_Stack Labs/Lab3_Stack.cpp)
+add_executable(Lab3_Queue Labs/Lab3_Queue.cpp)
