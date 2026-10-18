@@ -72,25 +72,33 @@ void PrintQueue(TQueue &Q) {
 }
 
 TQueue noSimilarNeighbours(TQueue &Q) {
-    if (Q.Head == nullptr)
+    if (isEmpty(Q))
         throw std::logic_error("Not enough queue elements");
 
     TQueue Q2 = InitQueue();
 
     int prev = DeQueue(Q);
+    if (isEmpty(Q)) { EnQueue(Q2, prev); return Q2; }
+
     int temp = DeQueue(Q);
+    if (isEmpty(Q)) {
+        EnQueue(Q2, prev);
+        EnQueue(Q2, temp);
+        return Q2;
+    }
+
     int next = DeQueue(Q);
 
     EnQueue(Q2, prev);
     while (!isEmpty(Q)) {
-        if (prev != next) {
-            EnQueue(Q2, temp);
-        }
+        if (prev != next) { EnQueue(Q2, temp); }
         prev = temp;
         temp = next;
         next = DeQueue(Q);
     }
-    EnQueue(Q2, temp);
+
+    if (prev != next) { EnQueue(Q2, temp); }
+    EnQueue(Q2, next);
 
     return Q2;
 }
@@ -100,23 +108,22 @@ int main() {
 
     TQueue Q;
     Q = InitQueue();
-    fillQueue(Q);
 
-    std::cout << "Queue: ";
-    PrintQueue(Q);
-    std::cout << std::endl;
-
+    std::cout << "Enter elements (-1 to stop): ";
 
     int var;
     do {
         std::cin >> var;
-        EnQueue(Q, var);
-    }while (var != -1);
+        if (var != -1) EnQueue(Q, var);
+    } while (var != -1);
     TQueue Q2 = noSimilarNeighbours(Q);
 
+    std::cout << "New queue: ";
     PrintQueue(Q2);
+    std::cout << std::endl;
 
     DestroyQueue(Q);
+    DestroyQueue(Q2);
     if (isEmpty(Q)) { std::cout << "Queue is empty" << std::endl; }
 
     return 0;

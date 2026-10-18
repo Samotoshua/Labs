@@ -1,4 +1,3 @@
-
 #include <iostream>
 
 #define ListSize 15

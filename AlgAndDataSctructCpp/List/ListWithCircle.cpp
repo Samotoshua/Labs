@@ -159,12 +159,13 @@ void printListNTimes(TList &List, int n) {
     if (List.First == nullptr)
         return;
     TListItem *t = List.First;
-    for (int i = 0; i < n; i++) {
-        do {
-            std::cout << t->Value << ' ';
-            t = t->Next;
-        } while (t != List.First);
-        std::cout << std::endl;
+
+    int count = 0;
+    while (true) {
+        if (t == List.First) { count++; std::cout << std::endl;}
+        if (count == n+1) break;
+        std::cout << t->Value << ' ';
+        t = t->Next;
     }
 }
 

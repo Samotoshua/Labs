@@ -55,7 +55,7 @@ void PrintStack(TStack *&s) {
     }
 }
 
-int timesInQueue(TStack *&s, auto value) {
+int timesInStack(TStack *&s, auto value) {
     int count = 0;
     while (!isEmpty(s)) {
         if (Pop(s) == value) {
@@ -83,7 +83,8 @@ int main() {
         std::cin >> var;
         Push(s, var);
     }while (var != 'q');
-    cout << timesInQueue(s, 'w');
+
+    cout << timesInStack(s, 'w');
     cout << std::endl;
 
     DestroyStack(s);

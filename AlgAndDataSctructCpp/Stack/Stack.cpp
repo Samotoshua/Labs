@@ -50,60 +50,103 @@ void fillStack(TStack *&s){
 }
 
 void PrintStack(TStack *&s) {
+    TStack *temp = nullptr;
+
     while (!isEmpty(s)) {
-        std::cout << Pop(s) << ' ';
+        int value = Pop(s);
+        std::cout << value << ' ';
+        Push(temp, value);
+    }
+
+    while (!isEmpty(temp)) {
+        Push(s, Pop(temp));
     }
 }
 
 int StackSum(TStack *&s) {
+    TStack *temp = nullptr;
     int sum = 0;
+
     while (!isEmpty(s)) {
-        sum +=Pop(s);
+        int value = Pop(s);
+        sum += value;
+        Push(temp, value);
     }
+
+    while (!isEmpty(temp)) {
+        Push(s, Pop(temp));
+    }
+
     return sum;
 }
 
 int StackDobutok(TStack *&s) {
+    TStack *temp = nullptr;
     int dobutok = 1;
+
     while (!isEmpty(s)) {
-        dobutok *=Pop(s);
+        int value = Pop(s);
+        dobutok *= value;
+        Push(temp, value);
+    }
+
+    while (!isEmpty(temp)) {
+        Push(s, Pop(temp));
     }
 
     return dobutok;
 }
 
 int StackCount(TStack *&s) {
-
+    TStack *temp = nullptr;
     int count = 0;
+
     while (!isEmpty(s)) {
-        Pop(s);
+        int value = Pop(s);
         count++;
+        Push(temp, value);
+    }
+
+    while (!isEmpty(temp)) {
+        Push(s, Pop(temp));
     }
 
     return count;
 }
 
 int StackEvenCount(TStack *&s) {
-
+    TStack *temp = nullptr;
     int count = 0;
 
     while (!isEmpty(s)) {
-        if (Pop(s) % 2 == 0) { count++; }
+        int value = Pop(s);
+        if (value % 2 == 0) { count++; }
+        Push(temp, value);
+    }
+
+    while (!isEmpty(temp)) {
+        Push(s, Pop(temp));
     }
 
     return count;
 }
 
 int StackOddSum(TStack *&s) {
+    TStack *temp = nullptr;
     int sum = 0;
 
     while (!isEmpty(s)) {
-        if (Pop(s) % 2 != 0) { sum += Pop(s); }
+        int value = Pop(s);
+        if (value % 2 != 0) { sum += value; }
+        Push(temp, value);
+    }
+
+    while (!isEmpty(temp)) {
+        Push(s, Pop(temp));
     }
 
     return sum;
 }
-
 
 int main() {
     srand(time(nullptr));
@@ -120,22 +163,15 @@ int main() {
     PrintStack(s);
     std::cout << std::endl;
 
-    fillStack(s);
     std::cout << "StackSum = " << StackSum(s) << std::endl;
 
-    fillStack(s);
     std::cout << "StackDobutok = " << StackDobutok(s) << std::endl;
 
-    fillStack(s);
     std::cout << "StackCount = " << StackCount(s) << std::endl;
 
-    fillStack(s);
     std::cout << "StackEvenCount = " << StackEvenCount(s) << std::endl;
 
-    fillStack(s);
     std::cout << "StackOddSum = " << StackOddSum(s) << std::endl;
-
-    fillStack(s);
 
     DestroyStack(s);
     if (isEmpty(s)) { std::cout << "Stack is empty" << std::endl; }

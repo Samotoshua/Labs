@@ -66,45 +66,56 @@ void fillQueue(TQueue &Q){
 }
 
 void PrintQueue(TQueue &Q) {
-    while (!isEmpty(Q)) {
-        std::cout << DeQueue(Q) << ' ';
+    for (int i = 0; i < QueueSize; i++) {
+        int value = DeQueue(Q);
+        std::cout << value << ' ';
+        EnQueue(Q, value);
     }
 }
 
 int QueueSum(TQueue &Q) {
     int sum = 0;
-    while (!isEmpty(Q)) {
-        sum +=DeQueue(Q);
+
+    for (int i = 0; i < QueueSize; i++) {
+        int value = DeQueue(Q);
+        sum += value;
+        EnQueue(Q, value);
     }
+
     return sum;
 }
 
 int QueueDobutok(TQueue &Q) {
     int dobutok = 1;
-    while (!isEmpty(Q)) {
-        dobutok *=DeQueue(Q);
+
+    for (int i = 0; i < QueueSize; i++) {
+        int value = DeQueue(Q);
+        dobutok *= value;
+        EnQueue(Q, value);
     }
 
     return dobutok;
 }
 
 int QueueCount(TQueue &Q) {
-
     int count = 0;
-    while (!isEmpty(Q)) {
-        DeQueue(Q);
+
+    for (int i = 0; i < QueueSize; i++) {
+        int value = DeQueue(Q);
         count++;
+        EnQueue(Q, value);
     }
 
     return count;
 }
 
 int QueueEvenCount(TQueue &Q) {
-
     int count = 0;
 
-    while (!isEmpty(Q)) {
-        if (DeQueue(Q) % 2 == 0) { count++; }
+    for (int i = 0; i < QueueSize; i++) {
+        int value = DeQueue(Q);
+        if (value % 2 == 0) { count++; }
+        EnQueue(Q, value);
     }
 
     return count;
@@ -113,8 +124,10 @@ int QueueEvenCount(TQueue &Q) {
 int QueueOddSum(TQueue &Q) {
     int sum = 0;
 
-    while (!isEmpty(Q)) {
-        if (DeQueue(Q) % 2 != 0) { sum += DeQueue(Q); }
+    for (int i = 0; i < QueueSize; i++) {
+        int value = DeQueue(Q);
+        if (value % 2 != 0) { sum += value; }
+        EnQueue(Q, value);
     }
 
     return sum;
@@ -123,38 +136,29 @@ int QueueOddSum(TQueue &Q) {
 int main() {
     srand(time(nullptr));
 
-    TQueue Q;
-    Q = InitQueue();
+    TQueue Q = InitQueue();
 
     fillQueue(Q);
 
     std::cout << "Queue: ";
-    while (!isEmpty(Q)) { std::cout<< DeQueue(Q) << " ";}
-    std::cout << std::endl;
-
-    fillQueue(Q);
     PrintQueue(Q);
     std::cout << std::endl;
 
-    fillQueue(Q);
     std::cout << "QueueSum = " << QueueSum(Q) << std::endl;
 
-    fillQueue(Q);
     std::cout << "QueueDobutok = " << QueueDobutok(Q) << std::endl;
 
-    fillQueue(Q);
     std::cout << "QueueCount = " << QueueCount(Q) << std::endl;
 
-    fillQueue(Q);
     std::cout << "QueueEvenCount = " << QueueEvenCount(Q) << std::endl;
 
-    fillQueue(Q);
     std::cout << "QueueOddSum = " << QueueOddSum(Q) << std::endl;
 
-    fillQueue(Q);
-
     DestroyQueue(Q);
-    if (isEmpty(Q)) { std::cout << "Queue is empty" << std::endl; }
+
+    if (isEmpty(Q)) {
+        std::cout << "Queue is empty" << std::endl;
+    }
 
     return 0;
 }
