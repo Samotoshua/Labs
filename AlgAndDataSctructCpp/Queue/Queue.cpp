@@ -65,73 +65,106 @@ void fillQueue(TQueue &Q){
     }
 }
 
+
 void PrintQueue(TQueue &Q) {
-    for (int i = 0; i < QueueSize; i++) {
+    TQueue temp = InitQueue();
+
+    while (!isEmpty(Q)) {
         int value = DeQueue(Q);
         std::cout << value << ' ';
-        EnQueue(Q, value);
+        EnQueue(temp, value);
+    }
+
+    while (!isEmpty(temp)) {
+        EnQueue(Q, DeQueue(temp));
     }
 }
 
 int QueueSum(TQueue &Q) {
+    TQueue temp = InitQueue();
     int sum = 0;
 
-    for (int i = 0; i < QueueSize; i++) {
+    while (!isEmpty(Q)) {
         int value = DeQueue(Q);
         sum += value;
-        EnQueue(Q, value);
+        EnQueue(temp, value);
+    }
+
+    while (!isEmpty(temp)) {
+        EnQueue(Q, DeQueue(temp));
     }
 
     return sum;
 }
 
 int QueueDobutok(TQueue &Q) {
+    TQueue temp = InitQueue();
     int dobutok = 1;
 
-    for (int i = 0; i < QueueSize; i++) {
+    while (!isEmpty(Q)) {
         int value = DeQueue(Q);
         dobutok *= value;
-        EnQueue(Q, value);
+        EnQueue(temp, value);
+    }
+
+    while (!isEmpty(temp)) {
+        EnQueue(Q, DeQueue(temp));
     }
 
     return dobutok;
 }
 
 int QueueCount(TQueue &Q) {
+    TQueue temp = InitQueue();
     int count = 0;
 
-    for (int i = 0; i < QueueSize; i++) {
+    while (!isEmpty(Q)) {
         int value = DeQueue(Q);
         count++;
-        EnQueue(Q, value);
+        EnQueue(temp, value);
+    }
+
+    while (!isEmpty(temp)) {
+        EnQueue(Q, DeQueue(temp));
     }
 
     return count;
 }
 
 int QueueEvenCount(TQueue &Q) {
+    TQueue temp = InitQueue();
     int count = 0;
 
-    for (int i = 0; i < QueueSize; i++) {
+    while (!isEmpty(Q)) {
         int value = DeQueue(Q);
         if (value % 2 == 0) { count++; }
-        EnQueue(Q, value);
+        EnQueue(temp, value);
+    }
+
+    while (!isEmpty(temp)) {
+        EnQueue(Q, DeQueue(temp));
     }
 
     return count;
 }
 
 int QueueOddSum(TQueue &Q) {
+    TQueue temp = InitQueue();
     int sum = 0;
 
-    for (int i = 0; i < QueueSize; i++) {
+    while (!isEmpty(Q)) {
         int value = DeQueue(Q);
         if (value % 2 != 0) { sum += value; }
-        EnQueue(Q, value);
+        EnQueue(temp, value);
+    }
+
+    while (!isEmpty(temp)) {
+        EnQueue(Q, DeQueue(temp));
     }
 
     return sum;
 }
+
 
 int main() {
     srand(time(nullptr));
