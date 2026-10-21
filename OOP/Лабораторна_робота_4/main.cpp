@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include "MyClass.h"
 
@@ -38,6 +39,27 @@ int main() {
     std::cout << "\n======Input P1=====\n";
     p1.input();
     p1.output();
+
+    std::cout << "\n======Operator << ======\n";
+    std::cout << p1;
+    std::cout << p3;
+
+    std::cout << "\n======Operator == ======\n";
+    std::cout << std::boolalpha;
+    std::cout << "P3 == P4: " << (p3 == p4) << std::endl;
+    std::cout << "P3 == Matrix: " << (p3 == pMatrix) << std::endl;
+
+    std::cout << "\n======Operator + ======\n";
+    Polynomial sum = p3 + pMatrix;
+    std::cout << sum;
+
+    std::cout << "\n======Operator - ======\n";
+    Polynomial difference = p3 - pMatrix;
+    std::cout << difference;
+
+    std::cout << "\n======Operator * ======\n";
+    Polynomial product = p3 * pMatrix;
+    std::cout << product;
 
     return 0;
 }
