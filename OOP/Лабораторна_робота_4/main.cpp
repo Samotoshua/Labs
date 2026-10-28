@@ -61,5 +61,30 @@ int main() {
     Polynomial product = p3 * pMatrix;
     std::cout << product;
 
+
+
+
+    std::cout << "\n======Func copy ======\n";
+    Polynomial Pcopy = Polynomial::copy(p1);
+    std::cout << Pcopy;
+
+    std::cout << "\n======Func short fraction ======\n";
+    pMatrix.toShort();
+    std::cout << pMatrix;
+
+    std::cout << "\n======Func calculate in point ======\n";
+    std::cout << "P3(1) = " << p1.calcIn(1) << std::endl;
+    std::cout << "P3(2) = " << p1.calcIn(2) << std::endl;
+
+    std::cout << "\n======Func find derivative ======\n";
+    Polynomial derivative(p1);
+    derivative.derive();
+    std::cout << derivative;
+
+    std::cout << "\n======Func P(x+b) ======\n";
+    p1.addParameter(2);
+    std::cout << p1;
+
+
     return 0;
 }

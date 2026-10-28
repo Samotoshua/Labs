@@ -1,4 +1,5 @@
 #include "MyClass.h"
+#include <cmath>
 #include <iostream>
 
 Polynomial::Polynomial() {
@@ -164,6 +165,10 @@ Polynomial Polynomial::operator-(const Polynomial &other) const {
     return result;
 }
 
+// Polynomial Polynomial::operator-(const Polynomial &other) const {
+//     return (other * -1 ) + *this;
+// }
+
 Polynomial Polynomial::operator*(const Polynomial &other) const {
     int newSize = size + other.size - 1;
     Polynomial result(newSize);
@@ -183,16 +188,97 @@ Polynomial Polynomial::operator*(const Polynomial &other) const {
     return result;
 }
 
-bool Polynomial::operator==(const Polynomial &other) const {
-    if (this->size == other.size) {
-        for (int i = 0; i < size; i++) {
-            if ((this->whole[i] != other.whole[i]) || (this->natural[i] != other.natural[i])) {
-                return false;
-            }
-        }
-        return true;
+Polynomial Polynomial::operator*(const double num) const {
+    Polynomial result(this->size);
+    for (int i = 0; i < this->size; i++) {
+        int t = this->whole[i] * num;
+
+        result.whole[i] = t;
+        result.natural[i] = this->natural[i];
     }
-    return false;
+    return result;
+}
+
+bool Polynomial::operator==(const Polynomial &other) const {
+    if (size != other.size) return false;
+
+    for (int i = 0; i < size; i++) {
+        if (whole[i] * other.natural[i] != other.whole[i] * natural[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+Polynomial Polynomial::copy(const Polynomial &other) {
+    return Polynomial(other);
+}
+
+void Polynomial::toShort() const {
+    for (int i = 0; i < size; i++) {
+        int a = whole[i];
+        int b = natural[i];
+
+        if (a < 0) a = -a;
+        if (b < 0) b = -b;
+
+        while (b != 0) {
+            const int temp = b;
+            b = a % b;
+            a = temp;
+        }
+
+        whole[i] /= a;
+        natural[i] /= a;
+
+        if (natural[i] < 0) {
+            whole[i] *= -1;
+            natural[i] *= -1;
+        }
+    }
+}
+
+double Polynomial::calcIn(const double num) const {
+    double result = 0;
+
+    for (int i = 0; i < size; i++) {
+        result += (whole[i] * 1.0 / natural[i]) * std::pow(num, i);
+    }
+
+    return result;
+}
+
+void Polynomial::derive() {
+    const int newSize = (size > 1) ? size - 1 : 1;
+    Polynomial result(newSize);
+
+    for (int i = 1; i < size; i++) {
+        result.whole[i - 1] = whole[i] * i;
+        result.natural[i - 1] = natural[i];
+    }
+
+    result.toShort();
+    *this = result;
+}
+
+void Polynomial::addParameter(const double num) {
+    const int b = num;
+
+    int n[] = {b, 1};
+    int d[] = {1, 1};
+
+    Polynomial shift(2, n, d);// P(x) = num + x
+    Polynomial result(1, &whole[size - 1], &natural[size - 1]);// P(x) = lastN/lastD
+
+    for (int i = size - 2; i >= 0; i--) {
+        Polynomial coefficient(1, &whole[i], &natural[i]);
+
+        result = result * shift + coefficient;
+        result.toShort();
+    }
+
+    *this = result;
 }
 
 std::ostream& operator<<(std::ostream &os, const Polynomial &other) {
@@ -262,3 +348,4 @@ void Polynomial::output() const {
 
     std::cout << std::endl;
 }
+

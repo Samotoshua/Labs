@@ -22,10 +22,17 @@ public:
     Polynomial operator+(const Polynomial &other) const;
     Polynomial operator-(const Polynomial &other) const;
     Polynomial operator*(const Polynomial &other) const;
+    Polynomial operator*(double num) const;
+
+    friend std::ostream& operator<<(std::ostream &os, const Polynomial &other);
 
     bool operator==(const Polynomial &other) const;
 
-    friend std::ostream& operator<<(std::ostream &os, const Polynomial &other);
+    static Polynomial copy(const Polynomial &other);
+    void toShort() const;
+    double calcIn(double num) const;
+    void derive();
+    void addParameter(double num);
 
     void input();
     void output() const;
