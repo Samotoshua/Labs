@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "PolynomialGraph.h"
 
@@ -15,32 +14,44 @@ int main() {
     PolynomialGraph graph1(3, n1, d1, GraphColor::Blue);
     PolynomialGraph graph2(2, n2, d2);
     PolynomialGraph graph3(3, n3, d3, GraphColor::Green);
-
     graph2.setColor(GraphColor::Red);
 
-    std::cout << "Original: " << graph1;
+    std::cout << "Original:\n" << graph1;
 
     ++graph1;
-    std::cout << "After ++: " << graph1;
+    std::cout << "After ++:\n" << graph1;
 
     --graph1;
-    std::cout << "After --: " << graph1;
+    std::cout << "After --:\n" << graph1;
 
     PolynomialGraph negative = -graph1;
-    std::cout << "Negative: " << negative;
+    std::cout << "Negative:\n" << negative;
 
-    graph1[2];
+    TPair coefficient = graph1[2];
+    std::cout << "Coefficient at x^2 = "
+              << coefficient.x << '/' << coefficient.y << '\n';
 
     PolynomialGraph copy(graph1);
     std::cout << std::boolalpha;
-    std::cout << "Equal: " << (graph1 == copy) << '\n';
+    std::cout << "Same polynomial and color: " << (graph1 == copy) << '\n';
+    copy.setColor(GraphColor::Red);
+    std::cout << "Same polynomial, different color: " << (graph1 == copy) << '\n';
+
+    std::cout << "\n--- Input using input() ---\n";
+    PolynomialGraph enteredByMethod;
+    enteredByMethod.input();
+    std::cout << "Entered polynomial:\n" << enteredByMethod;
+
+    std::cout << "\n--- Input using operator >> ---\n";
+    PolynomialGraph enteredByOperator;
+    std::cin >> enteredByOperator;
+    std::cout << "Entered polynomial:\n" << enteredByOperator;
 
     const int width = 900;
     const int height = 600;
     const int scale = 40;
-
-    int centerX = width / 2;
-    int centerY = height / 2;
+    const int centerX = width / 2;
+    const int centerY = height / 2;
 
     InitWindow(width, height, "Polynomial Graphs");
     SetTargetFPS(60);
