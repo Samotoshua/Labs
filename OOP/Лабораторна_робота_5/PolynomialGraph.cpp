@@ -16,7 +16,7 @@ Color PolynomialGraph::getColor() const {
     const Color colors[] = {
         RED, GREEN, BLUE, YELLOW, PURPLE, BLACK
     };
-    return colors[static_cast<int>(color)];
+    return colors[static_cast<int>(this->color)];
 }
 
 void PolynomialGraph::setColor(GraphColor newColor) {
@@ -35,8 +35,7 @@ void PolynomialGraph::draw(int width, int height, int scale) const {
         double x = (px - centerX) / (double)scale;
         double y = calcIn(x);
 
-        if (std::isfinite(y) && std::isfinite(previousY) &&
-            std::abs(y) <= limit && std::abs(previousY) <= limit) {
+        if (std::abs(y) <= limit && std::abs(previousY) <= limit) {
             int py1 = centerY - (int)(previousY * scale);
             int py2 = centerY - (int)(y * scale);
             DrawLine(px - 1, py1, px, py2, getColor());
@@ -83,7 +82,7 @@ std::istream& operator>>(std::istream& is, PolynomialGraph& graph) {
     int count;
     std::cout << "Enter number of coefficients: ";
     is >> count;
-    if (!is) return is;
+    if (!is) return is;//cin.fail()
 
     while (count <= 0) {
         std::cout << "Invalid size! Enter again: ";
@@ -106,7 +105,7 @@ std::istream& operator>>(std::istream& is, PolynomialGraph& graph) {
         while (graph.natural[i] == 0) {
             std::cout << "Denominator cannot be zero! Enter again: ";
             is >> graph.natural[i];
-            if (!is) return is;
+            if (!is) return is;//cin.fail()
         }
     }
 
@@ -129,13 +128,27 @@ std::istream& operator>>(std::istream& is, PolynomialGraph& graph) {
     return is;
 }
 
+
 std::ostream& operator<<(std::ostream& os, const PolynomialGraph& graph) {
     const char* names[] = {
-        "Red", "Green", "Blue", "Yellow", "Purple", "Black"
+        "Red", "Green", "Blue",
+        "Yellow", "Purple", "Black"
     };
 
+    const char* ansiColors[] = {
+        "\x1B[31m", "\x1B[32m", "\x1B[34m",
+        "\x1B[33m", "\x1B[35m", "\x1B[30m"
+    };
+
+    int index = static_cast<int>(graph.color);
+
+    os << ansiColors[index];
     os << static_cast<const Polynomial&>(graph);
-    os << "Color: " << names[static_cast<int>(graph.color)]
-       << " (" << static_cast<int>(graph.color) + 1 << ")\n";
+    os << "\x1B[0m";
+
+    os << "Color: " << names[index]
+       << " (" << index + 1 << ")\n";
+
     return os;
 }
+

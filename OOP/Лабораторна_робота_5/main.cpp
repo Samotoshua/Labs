@@ -37,15 +37,15 @@ int main() {
     copy.setColor(GraphColor::Red);
     std::cout << "Same polynomial, different color: " << (graph1 == copy) << '\n';
 
-    std::cout << "\n--- Input using input() ---\n";
-    PolynomialGraph enteredByMethod;
-    enteredByMethod.input();
-    std::cout << "Entered polynomial:\n" << enteredByMethod;
-
-    std::cout << "\n--- Input using operator >> ---\n";
-    PolynomialGraph enteredByOperator;
-    std::cin >> enteredByOperator;
-    std::cout << "Entered polynomial:\n" << enteredByOperator;
+    // std::cout << "\n--- Input using input() ---\n";
+    // PolynomialGraph enteredByMethod;
+    // enteredByMethod.input();
+    // std::cout << "Entered polynomial:\n" << enteredByMethod;
+    //
+    // std::cout << "\n--- Input using operator >> ---\n";
+    // PolynomialGraph enteredByOperator;
+    // std::cin >> enteredByOperator;
+    // std::cout << "Entered polynomial:\n" << enteredByOperator;
 
     const int width = 900;
     const int height = 600;
