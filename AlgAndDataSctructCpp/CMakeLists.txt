@@ -17,7 +17,9 @@ add_executable(ListsWithOneDirection-PrevOnly List/ListsWithOneDirection-PrevOnl
 add_executable(ListsWithOneDirection-NoEnd List/ListsWithOneDirection-NoEnd.cpp)
 add_executable(ListWithCircle List/ListWithCircle.cpp)
 add_executable(Iterator Iterators/Iterators.cpp
-        Queue/Queue.cpp)
+        Queue/Queue.cpp
+        Tree/BST.cpp
+)
 add_executable(ListWithCircleOneDirection List/ListWithCircleOneDirection.cpp)
 add_executable(Lab2 Labs/Lab2.cpp)
 add_executable(Stack Stack/stack.cpp)
@@ -27,3 +29,4 @@ add_executable(ListWithCircleWithIterator List/ListWithCircleWithIterator.cpp)
 add_executable(ListWithCircleOneDirectionWithIterator List/ListWithCircleOneDirectionWithIterator.cpp)
 add_executable(Lab3_Stack Labs/Lab3_Stack.cpp)
 add_executable(Lab3_Queue Labs/Lab3_Queue.cpp)
+add_executable(BST Tree/BST.cpp)
