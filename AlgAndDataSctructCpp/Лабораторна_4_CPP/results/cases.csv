@@ -1,0 +1,8 @@
+case;n;time_ms
+ascending;200000;4.359200
+descending;200000;4.362800
+random;200000;4.474500
+almost_sorted;200000;4.376400
+repeated;200000;3.697000
+zeros;200000;0.337800
+random_N;500275;11.488500
